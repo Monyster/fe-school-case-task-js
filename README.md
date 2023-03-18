@@ -1,9 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -14,11 +8,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -27,44 +16,56 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Додаток для навчання
 
-### `npm run eject`
+Застосунок працює з використанням API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+https://www.postman.com/aninix/workspace/genesis-front-end-school/overview
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Сторінки додатку
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Головна сторінка з курсами
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```<Route path="/" element={<Courses />} />
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Сторінка для перегляду курсу
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```<Route path="/:id" element={<Course />} />
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Детально про головну сторінку
 
-### Analyzing the Bundle Size
+- Сторінка показує по 10 курсів. В собі містить:
+  - Фото курсу (При наведенні програється відео)
+  - Заголовок
+  - Кількість уроків
+  - Рейтинг
+  - Опис
+  - Навички
+  - Кнопку-посилання (переходить на сторінку перегляду курсу)
+- При виборі сторінки - автоматичний підйом до початку перегляду
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Детально про сторінку перегляду курсу
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Сторінка показує відео, деталі курсу та список уроків. Також містить:
+  - Кнопку для повернення на головну сторінку
+  - Відеоплеєр
+    - Якщо обрати будь-який урок, то у лівому верхньому кутку буде його назва
+    - Picture-In-Picture у правому верхньому кутку програвача
+    - Спеціальні комбінації:
+      - Alt + 1 збільшує швидкість програвача на 0.5
+      - Alt + 2 зменшує швидкість програвача на 0.5
+      - Alt + 3 повертає швидкість програвача на 1
+  - Дату запуску і рейтинг
+  - Опис
+  - Список навичок
+  - Загальний час курсу і кількість уроків
+  - Список уроків
+    - Кожен урок має назву і час
+    - Заблоковані курси показані напівпрозорим сірим кольором
+    - При натисканні відео встановиться у програвач і відбудеться автоматичний скрол до програвача
