@@ -28,14 +28,14 @@ https://www.postman.com/aninix/workspace/genesis-front-end-school/overview
 
 - Головна сторінка з курсами
 
-```<Route path="/" element={<Courses />} />
-
+```
+<Route path="/" element={<Courses />} />
 ```
 
 - Сторінка для перегляду курсу
 
-```<Route path="/:id" element={<Course />} />
-
+```
+<Route path="/:id" element={<Course />} />
 ```
 
 ### Детально про головну сторінку
