@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
-import "./styles/style.css";
-import { Rating } from "@mui/material";
 import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+
+import "./styles/style.css";
+
 import { installVideoPlayer } from "../../utils/installVideoPlayer";
+
+import { Rating } from "@mui/material";
 
 export const CourseCard = ({ id, title, img, videoLink = "", description, lessonsCount, skills = [], rating, loading }) => {
   const videoPlayer = useRef(null);
@@ -10,7 +13,7 @@ export const CourseCard = ({ id, title, img, videoLink = "", description, lesson
   installVideoPlayer(videoPlayer, videoLink);
 
   if (loading) {
-    return <li className="card-skeleton"></li>;
+    return <li className="card-skeleton skeleton"></li>;
   }
 
   return (
@@ -20,6 +23,8 @@ export const CourseCard = ({ id, title, img, videoLink = "", description, lesson
           muted
           onMouseOver={() => {
             if (isNaN(videoPlayer.current.duration)) return;
+            if (videoPlayer.current.readyState !== 4) return;
+            console.log();
             videoPlayer.current.play();
           }}
           onMouseOut={() => {
@@ -34,7 +39,7 @@ export const CourseCard = ({ id, title, img, videoLink = "", description, lesson
       </div>
       <div className="card-info-area">
         <div className="card-info-top">
-          <p className="lessons">Занять: {lessonsCount}</p>
+          <p className="lessons">Lessons: {lessonsCount}</p>
           <p className="rating">
             <Rating name="half-rating-read" defaultValue={rating} readOnly size="large" />
             {rating}/5.0

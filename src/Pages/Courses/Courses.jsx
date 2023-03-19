@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import "./styles/style.css";
-import { CourseCard } from "../../Components/CourseCard/CourseCard";
 
-import Pagination from "@mui/material/Pagination";
 import { wiseyApi } from "../../utils/wiseyFetchApi";
+
+import { CourseCard } from "../../Components/CourseCard";
+import Pagination from "@mui/material/Pagination";
 import ScrollToTop from "../../Components/Utils/scrollToTop";
 
 export const Courses = () => {
@@ -45,7 +46,7 @@ export const Courses = () => {
       <main className="section">
         <div className="container">
           <h2 className="title-1">Increase your knowledge</h2>
-          <h3 className="subTitle-1">Sign up for a course and learn the skills that will help you achieve your goals.</h3>
+          <h3 className="subTitle-1">Join the courses and gain the skills that will help you achieve your goals.</h3>
           <ul className="courses" ref={startCoursesRef}>
             {loading
               ? [...Array(perPage)].map((val, i) => <CourseCard key={i} loading={loading}></CourseCard>)
@@ -56,7 +57,7 @@ export const Courses = () => {
                     course={c}
                     title={c.title}
                     img={`${c.previewImageLink}/cover.webp`}
-                    videoLink={c.meta.courseVideoPreview.link}
+                    videoLink={c.meta.courseVideoPreview?.link}
                     id={c.id}
                     description={c.description}
                     lessonsCount={c.lessonsCount}

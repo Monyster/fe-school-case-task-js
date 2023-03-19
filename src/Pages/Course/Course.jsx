@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
 
 import "./styles/style.css";
 
 import { wiseyApi } from "../../utils/wiseyFetchApi";
-import { NavLink, useParams } from "react-router-dom";
-import { Rating } from "@mui/material";
-import ScrollToTop from "../../Components/Utils/scrollToTop";
 import { getFormattedDate } from "../../utils/getFormattedData";
 import { installVideoPlayer } from "../../utils/installVideoPlayer";
+
+import { Rating } from "@mui/material";
+import ScrollToTop from "../../Components/Utils/scrollToTop";
 
 export const Course = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ export const Course = () => {
   // Contain all about course
   const [course, setCourse] = useState({});
 
-  // Contain current video
+  // Contain current video data
   const [videoLink, setVideoLink] = useState(null);
   const [videoName, setVideoName] = useState(null);
   const [videoPoster, setVideoPoster] = useState(null);
@@ -25,6 +26,10 @@ export const Course = () => {
 
   const videoPlayer = useRef(null);
 
+  // Callback for keyboard events
+  // Alt + 1
+  // Alt + 2
+  // Alt + 3
   const keyPress = useCallback((event) => {
     event.preventDefault();
     console.log(event.key);
@@ -47,6 +52,7 @@ export const Course = () => {
     }
   }, []);
 
+  // Install keydown keyboard listener and reinstall on callback
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
@@ -60,6 +66,7 @@ export const Course = () => {
     });
   }, [id]);
 
+  // Show skeleton while loading course data
   if (loading) {
     return (
       <>
@@ -96,13 +103,20 @@ export const Course = () => {
     );
   }
 
+  // If the object contains video and the video data is missing.
+  // Overwrite the parameters
+
+  if (course.meta.courseVideoPreview === undefined && !videoPoster) {
+    setVideoPoster(course.previewImageLink + "/cover.webp");
+  }
+
   if (course.meta.courseVideoPreview !== undefined && (!videoLink || !videoPoster)) {
     setVideoLink(course.meta.courseVideoPreview.link);
     setVideoPoster(course.previewImageLink + "/cover.webp");
     setVideoName("");
-    return;
   }
 
+  // A video player is installed if videoLink is available
   if (videoLink) {
     installVideoPlayer(videoPlayer, videoLink);
   }
@@ -180,11 +194,11 @@ export const Course = () => {
               <ul className="course-lessons-list">
                 {course.lessons.map((lesson, i) => (
                   <li
-                    className={"lesson " + "lesson-status-" + lesson.status}
+                    className={"lesson lesson-status-" + lesson.status}
                     key={i}
-                    onClick={(event) => {
+                    onClick={() => {
                       setVideoLink(lesson.link);
-                      setVideoPoster(lesson.previewImageLink + ".webp");
+                      setVideoPoster(lesson.previewImageLink + `/lesson-${i + 1}.webp`);
                       setVideoName(`${i + 1}. ${lesson.title}`);
                       videoPlayer.current.scrollIntoView();
                     }}

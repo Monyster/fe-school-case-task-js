@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Courses } from "./Pages/Courses";
 import "./styles/main.css";
+
+import { Courses } from "./Pages/Courses";
 import { Course } from "./Pages/Course";
 
 function App() {
