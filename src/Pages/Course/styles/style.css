@@ -8,6 +8,7 @@
     align-items: stretch;
 }
 
+/* ---------------- GO HOME ----------------- */
 .course-go-home {
     display: flex;
     align-items: flex-start;
@@ -18,62 +19,74 @@
     font-size: 20px;
     font-weight: 600;
     line-height: 1.3;
-    background-color: var(--title-1);
 
+    background-color: var(--accent);
     color: var(--white);
 
     border-radius: 5px;
 
     padding: 10px 20px;
+
+    letter-spacing: 1px;
+
+    transition: opacity 0.2s ease-in;
+}
+
+.course-go-home-button:hover {
+    opacity: 0.8;
+}
+
+.course-go-home-button:active {
+    position: relative;
 }
 
 
-
+/* ---------------- TITLE ----------------- */
 .course-preview-title {
     padding: 20px 0 0 0;
-    font-size: calc(30px + 1vw);
 
+    font-size: calc(30px + 1vw);
     font-weight: 700;
     line-height: 1.3;
+
     color: var(--title-1);
 }
 
-
-
+/* ---------------- VIDEO ----------------- */
 .course-preview-media {
     position: relative;
-    padding-bottom: 60%;
+
+    padding-bottom: 55%;
     height: 0;
 }
 
 .course-preview-video-title {
     position: absolute;
+
     top: calc(10px + 2vw);
     left: 20px;
 
     font-size: calc(14px + 1vw);
-
     font-weight: 500;
     line-height: 1.1;
-    color: var(--gray);
+
+    color: var(--black);
+    text-shadow: -1px 0 var(--white), 0 1px var(--white), 1px 0 var(--white), 0 -1px var(--white);
 
     z-index: 10;
 }
 
 .course-preview-video-pip-button {
     position: absolute;
-    content: "";
 
-    width: 40px;
-    height: 40px;
+    top: calc(25px + 2vw);
+    right: 20px;
 
-    object-fit: cover;
+    width: calc(25px + 2vw);
+    height: calc(25px + 2vw);
 
     background-image: url("./../images/picture-in-picture.svg");
     background-size: cover;
-
-    top: calc(15px + 2vw);
-    right: 20px;
 
     z-index: 15;
 }
@@ -81,20 +94,25 @@
 
 .course-preview-media video {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
+    object-fit: cover;
 
     z-index: 5;
 }
 
+/* ---------------- COURSE DETAILS ----------------- */
 .course-preview-detail {
-    /* border: 1px solid red; */
-
     padding: 0 20px
 }
 
+
+/* ---------------- Date and rating ----------------- */
 .course-preview-detail-header {
     display: flex;
     flex-wrap: wrap-reverse;
@@ -105,9 +123,9 @@
     padding: 10px 0 0 0;
 
     font-size: calc(14px + 1vw);
-
     font-weight: 500;
     line-height: 1.1;
+
     color: var(--black);
 }
 
@@ -123,9 +141,10 @@
     justify-content: center;
 }
 
-/* ------------------------------------------------------ */
+/* ---------------- DESCRIPTION ------------------ */
 .course-preview-detail-description {
     padding: 20px 0 0 0;
+
     color: var(--black);
 }
 
@@ -133,17 +152,15 @@
     font-size: calc(22px + 1vw);
     font-weight: 500;
     line-height: 1.3;
-
 }
 
 .course-preview-detail-description-text {
     font-size: calc(16px + 1vw);
     font-weight: 400;
     line-height: 1.3;
-
 }
 
-/* ------------------------------------------------------ */
+/* ---------------- SKILLS ------------------ */
 .course-preview-detail-skills {
     padding: 20px 0 0 0;
 
@@ -169,6 +186,7 @@
 }
 
 
+/* ------------ Video timea and lessons count -------------- */
 .course-preview-detail-footer {
     display: flex;
     flex-wrap: wrap;
@@ -178,10 +196,10 @@
 
     padding: 30px 0 0 0;
 
-
     font-size: calc(14px + 1vw);
     font-weight: 500;
     line-height: 1.1;
+
     color: var(--black);
 }
 
@@ -195,9 +213,7 @@
 .course-preview-detail-footer-lessons {}
 
 
-
-
-
+/* ---------------- LESSONS LIST ------------------ */
 .course-lessons {
     padding: 30px 0 0 0;
 }
@@ -218,6 +234,7 @@
 
 .lesson {
     padding: 5px 20px;
+
     border-top: 1px solid var(--black);
 }
 
@@ -227,6 +244,7 @@
 
 .lesson-status-unlocked:hover {
     cursor: pointer;
+
     background: var(--gray);
     color: var(--black);
 }
@@ -251,9 +269,6 @@
     font-weight: 500;
     line-height: 1.1;
 }
-
-
-
 
 /* ---------------------SKELETON---------------------- */
 
